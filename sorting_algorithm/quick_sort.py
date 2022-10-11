@@ -1,9 +1,10 @@
-def quick_sort(data, left, right):
-    if left < right:
+# data: input array, left: index of the first element, right: index of the last element, k: top k
+def quick_sort(data, left, right, k):
+    if left < right and left < k:
         mid = partition(data, left, right)
         print(data)
-        quick_sort(data, left, mid - 1)
-        quick_sort(data, mid + 1, right)
+        quick_sort(data, left, mid - 1, k)
+        quick_sort(data, mid + 1, right, k)
 
 
 def partition(data, left, right):
@@ -21,7 +22,8 @@ def partition(data, left, right):
     return left
 
 
-test_list = [17, 6, 2, 4, 21, 34, 3, 8]
+test_list = [17, 6, 8, 8, 21, 34, 4, 8]
+k = 2
 print(test_list)
-quick_sort(test_list, 0, len(test_list)-1)
-print(test_list)
+quick_sort(test_list, 0, len(test_list)-1, k)
+print("k=", k, ": ", test_list)
